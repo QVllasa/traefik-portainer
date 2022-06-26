@@ -1,5 +1,11 @@
 http:
   middlewares:
+    webqube-traefik-auth:
+      basicAuth:
+        removeHeader: true
+        users:
+          - '{{env "TRAEFIK_DASHBOARD_USER"}}:{{env "TRAEFIK_DASHBOARD_PWD"}}'
+
     secureHeaders:
       headers:
         sslRedirect: true
