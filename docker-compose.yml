@@ -77,8 +77,8 @@ services:
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.pg-secure.entrypoints=websecure"
       - "traefik.http.routers.pg-secure.rule=Host(`${PGADMIN_URL}`)"
-      - "traefik.http.routers.pg-secure.service=pgadmin"
-      - "traefik.http.services.pgadmin.loadbalancer.server.port=${PGADMIN_PORT}"
+#      - "traefik.http.routers.pg-secure.service=pgadmin"
+#      - "traefik.http.services.pgadmin.loadbalancer.server.port=${PGADMIN_PORT}"
 
 
   jenkins:
