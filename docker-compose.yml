@@ -81,6 +81,20 @@ services:
 #      - "traefik.http.services.pgadmin.loadbalancer.server.port=${PGADMIN_PORT}"
 
 
+  cloudbeaver:
+    image: dbeaver/cloudbeaver
+    restart: always
+    networks:
+      - proxy
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.pg-${SUBDOMAIN}-secure.entrypoints=websecure"
+      - "traefik.http.routers.pg-${SUBDOMAIN}-secure.rule=Host(`cloudbeaver.webqube.de`)"
+
+
+
   jenkins:
     image: jenkins/jenkins:lts
     privileged: true
